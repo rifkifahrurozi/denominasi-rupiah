@@ -17,7 +17,7 @@ const Help = props => {
               </li>
               <li>
                 Tombol keyboard yang diperbolehkan hanyalah tombol{" "}
-                <strong>Enter</strong>, <strong>Spasi</strong>,
+                <strong>Enter</strong>, <strong>Spasi</strong>,{" "}
                 <strong>Shift</strong>, <strong>Arrows</strong> dan{" "}
                 <strong>Backspace</strong>
               </li>

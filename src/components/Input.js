@@ -297,6 +297,41 @@ class Input extends React.Component {
       obj = [...obj, { pecahan: "500", jumlah: Math.floor(limaratusan(i)) }];
     }
 
+    /* 100 */
+    const seratusan = n => {
+      if (n >= 500) {
+        let nmin;
+        n >= 50000
+          ? (nmin =
+              ((seratusribuan(i) % 1).toFixed(5) * 100000 -
+                20000 * Math.floor(duapuluhribuan(n)) -
+                10000 * Math.floor(sepuluhribuan(n)) -
+                5000 * Math.floor(limaribuan(n)) -
+                2000 * Math.floor(duaribuan(n)) -
+                1000 * Math.floor(seribuan(n)) -
+                500 * Math.floor(limaratusan(n)) -
+                50000) /
+              100)
+          : (nmin =
+              ((seratusribuan(i) % 1).toFixed(5) * 100000 -
+                20000 * Math.floor(duapuluhribuan(n)) -
+                10000 * Math.floor(sepuluhribuan(n)) -
+                5000 * Math.floor(limaribuan(n)) -
+                2000 * Math.floor(duaribuan(n)) -
+                1000 * Math.floor(seribuan(n)) -
+                500 * Math.floor(limaratusan(n))) /
+              100);
+        return Math.floor(nmin); // dibulatkan ke bawah. 100 tidak akan lebih dari lima, karena diatasnya ada 500
+      } else {
+        return ((seratusribuan(i) % 1).toFixed(5) * 100000) / 100;
+      }
+    };
+
+    // tambah 100an ke object jika ada
+    if (seratusan(i) >= 1) {
+      obj = [...obj, { pecahan: "100", jumlah: Math.floor(seratusan(i)) }];
+    }
+
     return obj;
   };
 
