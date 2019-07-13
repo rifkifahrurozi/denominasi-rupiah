@@ -15,7 +15,7 @@ npm install
 Project ini dilengkapi dengan module webpack-dev-server yang telah di setting pada package.json untuk mempermudah proses Development. Untuk mengakses project dalam mode Development, silahkan gunakan NPM berikut:
 
 ```bash
-npm start
+npm run start:dev
 ```
 
 ## Production
@@ -26,7 +26,20 @@ Untuk production setup pada project ini, gunakan NPM berikut ini:
 npm run build
 ```
 
-Direktori output production telah di atur pada konfigurasi webpack. File index.html berada di direktori utama dan untuk js,css, images dan static assets lainnya ada di direktor /assets
+Direktori output production telah di atur pada konfigurasi webpack. File yang digunakan sebagai container untuk aplikasi ini adalah index.html. File ini terletak di direktori utama, sedangkan untuk file Javascript,CSS, Images dan Static assets lainnya ada di direktori /assets
+
+## Run Application
+
+Untuk menjalankan aplikasi setelah setup production selesai, gunakan NPM berikut:
+
+```bash
+npm start
+```
+
+Aplikasi dapat diakses di http://localhost:3000
+Server akan berjalan pada port 3000. Pastikan port 3000 tidak terpakai. Untuk mengubah port, silahkan atur di file server.js
+
+Catatan: untuk menghentikan server, cukup gunakan keyboard shortcut CTRL+C pada terminal atau metode lainnya disesuaikan dengan platform yang digunakan.
 
 ## Disclaimer
 
