@@ -5,7 +5,7 @@ const initialStaticData = () => {
   return {
     author: "Rifki Fahrurozi",
     info:
-      "Mencari pecahan mata uang rupiah terbesar hingga terkecil dari jumlah nominal yang dimasukan. Contoh: pecahan rupiah dari Rp 59000 adalah 1x50000, 1x5000 dan 2x2000. Silahkan baca petunjuk penggunaan aplikasi ini agar anda mendapatkan hasil yang diharapkan."
+      "Mencari pecahan mata uang rupiah terbesar hingga terkecil dari jumlah angka yang dimasukan. Contoh: pecahan rupiah dari Rp 59.000 adalah 1x50.000, 1x5.000 dan 2x2.000. Silahkan baca petunjuk penggunaan aplikasi ini agar anda mendapatkan hasil yang diharapkan."
   };
 };
 

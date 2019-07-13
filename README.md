@@ -23,7 +23,7 @@ npm start
 Untuk production setup pada project ini, gunakan NPM berikut ini:
 
 ```bash
-npm build
+npm run build
 ```
 
 Output dalam direktori /dist dilengkapi dengan file html, yang mana file tersebut digenerate oleh plugin webpack HtmlWebpackPlugin dengan menggunakan sumber template file html yang berada di direktori /src.

@@ -24,7 +24,6 @@ class Input extends React.Component {
     // const rgx = /(^\d{1,3}(?!\d|\w|\W)|(?=^\d\.\d{3}(?!\d|\w|\W))+)|(?=^\d\,\d{2}(?!\d|\w|\W))/; // sebelumnya tanpa Rp & 3 angka diawal
     const rgx = /((^\Rp|\Rp\s)(\d{1,5}(?!\d|\w|\W))|(^\d{1,5}(?!\d|\w|\W))|(?=\d\.\d{3}(?!\d|\w|\W))+)|(?=\d\,\d{2}(?!\d|\w|\W))/;
     if (rgx.test(value) === false) {
-      // apabila tidak match dengan regex, maka return false
       return false;
     } else if (value.match(/[,]/g) && value.match(/[,]/g).length > 1) {
       // apabila koma yang diikuti oleh angka lebih dari satu, maka return false
@@ -405,7 +404,7 @@ class Input extends React.Component {
   // Render
   render() {
     const warning = this.state.warning;
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <div className={drstyles.formContainer}>
         <form>
