@@ -26,7 +26,7 @@ Untuk production setup pada project ini, gunakan NPM berikut ini:
 npm run build
 ```
 
-Output dalam direktori /dist dilengkapi dengan file html, yang mana file tersebut digenerate oleh plugin webpack HtmlWebpackPlugin dengan menggunakan sumber template file html yang berada di direktori /src.
+Direktori output production telah di atur pada konfigurasi webpack. File index.html berada di direktori utama dan untuk js,css, images dan static assets lainnya ada di direktor /assets
 
 ## Disclaimer
 
