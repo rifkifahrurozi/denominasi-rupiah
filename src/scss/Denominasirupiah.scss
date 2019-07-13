@@ -1,0 +1,68 @@
+@import "drhelper";
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap");
+
+html {
+  border-top: 3px solid #42b549;
+}
+body {
+  font-family: "Open Sans", sans-serif;
+  color: $fontgrey;
+  /*background: #dfffe1;*/
+  /*  background: #f4f5f7;*/
+  background: #ffffff;
+}
+
+.mainContainer {
+  display: block;
+  box-sizing: border-box;
+  max-width: 1000px;
+  width: calc(100% - 5%);
+  /*box-shadow: 0 1px 6px 0 rgba(49, 53, 59, 0.12);*/
+  /*border-radius: 12px;*/
+  padding: 25px;
+  margin: 0 auto;
+  @include clearfix;
+  background: #ffffff;
+  .appHeading {
+    text-align: center;
+    color: rgba(49, 53, 59, 0.88);
+    margin: 0 0 25px 0;
+    h1 {
+      margin: 0 0 15px 0;
+      padding: 0px 0 10px 0;
+      font-size: 1.5em;
+      position: relative;
+      &:after {
+        content: "";
+        width: 60px;
+        height: 1px;
+        background: #42b549;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+    a {
+      &.linkHelp {
+        text-decoration: underline;
+        font-size: 13px;
+        font-weight: 700;
+        color: #4fa149;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 768px) {
+  .mainContainer {
+    padding: 5px;
+  }
+}
+
+@media all and (min-width: 769px) {
+}
+
+@media all and (min-width: 1139px) {
+}

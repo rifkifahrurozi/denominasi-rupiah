@@ -1,0 +1,136 @@
+@import "drhelper";
+
+.formContainer {
+  display: block;
+  justify-content: center;
+  flex-direction: row;
+  padding: 15px;
+  position: relative;
+  form {
+    input {
+      display: block;
+      width: calc(100% - 60%);
+      padding: 10px 50px 15px 50px;
+      font-size: 1.4em;
+      font-family: "Open Sans", sans-serif;
+      box-sizing: border-box;
+      margin: 0 auto;
+      text-align: center;
+      font-weight: 700;
+      color: $fontgrey;
+      border: 1px solid #9fe4a3 !important;
+      box-shadow: 0 1px 6px 0 transparent;
+      &:focus {
+        border: 1px solid #abf5b0;
+        box-shadow: 0 1px 6px 0 #abf5b0;
+        outline: none;
+      }
+    }
+    button {
+      cursor: pointer;
+      display: block;
+      text-align: center;
+      margin: 20px auto 15px auto;
+      color: #fff;
+      padding: 13px;
+      background-color: #42b549;
+      border: 1px solid #42b549;
+      border-radius: 3px;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 20px;
+      &:hover {
+        background-color: #4fa149;
+        border-color: #4fa149;
+      }
+    }
+  }
+  .errorMessage {
+    position: relative;
+    display: block;
+    margin-bottom: 5px;
+    min-height: 22px;
+    overflow: hidden;
+    p {
+      margin: 0;
+      padding: 0;
+      color: #d50000;
+      position: absolute;
+      text-align: center;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14px;
+      width: 100%;
+    }
+    .showMessage {
+      top: 0 !important;
+      opacity: 1 !important;
+      transition: all 0.2s ease-in-out;
+    }
+    .hideMessage {
+      top: -22px;
+      transition: all 0.2s ease-in-out;
+      opacity: 0;
+    }
+  }
+}
+
+@media all and (max-width: 575px) {
+  .formContainer {
+    padding: 5px;
+    form {
+      input {
+        width: calc(100% - 20%);
+        font-size: 1em;
+      }
+    }
+  }
+}
+
+@media all and (min-width: 576px) {
+  .formContainer {
+    padding: 5px;
+    form {
+      input {
+        width: calc(100% - 30%);
+        font-size: 1em;
+      }
+    }
+  }
+}
+
+@media all and (min-width: 768px) {
+  .formContainer {
+    padding: 5px;
+    form {
+      input {
+        width: calc(100% - 40%);
+        font-size: 1em;
+      }
+    }
+  }
+}
+
+@media all and (min-width: 960px) {
+  .formContainer {
+    padding: 5px;
+    form {
+      input {
+        width: calc(100% - 50%);
+        font-size: 1em;
+      }
+    }
+  }
+}
+
+@media all and (min-width: 1140px) {
+  .formContainer {
+    padding: 5px;
+    form {
+      input {
+        width: calc(100% - 60%);
+        font-size: 1em;
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+.resultContainer {
+  text-align: center;
+  position: relative;
+}
+
+.itemResult {
+  display: inline-block;
+  border: solid 1px #42b549;
+  border-radius: 5px;
+  padding: 15px 25px;
+  background: #ffffff;
+  margin: 10px;
+  color: #42b549;
+  font-weight: 700;
+}
+
+@media all and (max-width: 575px) {
+  .itemResult {
+    width: calc(100% - 10%);
+    display: block;
+    padding: 10px;
+  }
+}

@@ -1,0 +1,126 @@
+.showBox {
+  display: block;
+}
+
+.hideBox {
+  display: none;
+}
+
+.btnClose {
+  padding: 10px 15px;
+  border: none;
+  margin: 15px auto;
+  background: #42b549;
+  border: 1px solid #42b549;
+  color: #ffffff;
+  display: block;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.modalContainer {
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1050;
+  outline: 0;
+  display: block;
+  background: rgba(18, 43, 19, 0.8);
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+  .modalBody {
+    width: calc(100% - 50%);
+    position: relative;
+    margin: 40px auto;
+    transform: translate(0, 0);
+    box-sizing: border-box;
+    padding: 15px;
+    .modalContent {
+      text-align: left;
+      position: relative;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
+      outline: 0;
+      box-sizing: border-box;
+      padding: 15px;
+      h3 {
+        text-align: center;
+        margin: 15px 0;
+      }
+      ol {
+        padding: 0 40px;
+        margin: 0;
+        li {
+          font-size: 14px;
+          line-height: 1.5;
+          margin: 0 0 10px 0;
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 768px) {
+  .modalContainer {
+    .modalBody {
+      width: calc(100% - 5%);
+      margin: 60px auto;
+      padding: 0;
+      .modalContent {
+        padding: 15px;
+        h3 {
+          font-size: 1.1em;
+        }
+        ol {
+          padding: 0 20px;
+        }
+      }
+    }
+  }
+}
+
+@media all and (min-width: 769px) {
+  .modalContainer {
+    .modalBody {
+      width: calc(100% - 30%);
+      margin: 60px auto;
+      padding: 0;
+      .modalContent {
+        padding: 15px;
+        h3 {
+          font-size: 1.2em;
+        }
+        ol {
+          padding: 0 20px;
+        }
+      }
+    }
+  }
+}
+
+@media all and (min-width: 1139px) {
+  .modalContainer {
+    .modalBody {
+      width: calc(100% - 60%);
+      margin: 60px auto;
+      padding: 0;
+      .modalContent {
+        padding: 15px;
+        h3 {
+          font-size: 1.3em;
+        }
+        ol {
+          padding: 0 20px;
+        }
+      }
+    }
+  }
+}
