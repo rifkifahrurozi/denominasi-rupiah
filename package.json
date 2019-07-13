@@ -1,7 +1,7 @@
 {
   "name": "denominasi-rupiah",
   "version": "1.0.0",
-  "description": "A simple application for denominate Indonesian Rupiah currency fraction. This is only a sample app to fullfill requirement on recruiting process in Tokopedia.",
+  "description": "A simple application for denominate Indonesian Rupiah currency fraction. This is only a sample app to fullfill requirement on recruiting process in Tokopedia. Btw, sorry for my english.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

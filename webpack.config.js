@@ -42,8 +42,8 @@ module.exports = {
             options: {
               sourceMap: true,
               modules: {
-                // localIdentName: "_[hash:base64:8]" // production (pola yang dipakai Tokopedia)
-                localIdentName: "[path][name]__[local]--[hash:base64:5]" // development
+                localIdentName: "_[hash:base64:8]" // production (seperti pola yang dipakai Tokopedia)
+                // localIdentName: "[path][name]__[local]--[hash:base64:5]" // development
               }
             }
           },
