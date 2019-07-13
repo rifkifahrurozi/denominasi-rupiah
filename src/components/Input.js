@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 
-// scss
+// SCSS
 import drstyles from "../scss/Input.scss";
 
-// action creator
+// Action Creator
 import { denominated, getAmount, emptyAmount } from "./actions/actions";
 
 class Input extends React.Component {
@@ -19,14 +19,14 @@ class Input extends React.Component {
     };
   }
 
-  // validasi input dari user
+  // Validasi input dari user
   validateInput = value => {
-    // const rgx = /(^\d{1,3}(?!\d|\w|\W)|(?=^\d\.\d{3}(?!\d|\w|\W))+)|(?=^\d\,\d{2}(?!\d|\w|\W))/; // sebelumnya tanpa RP
+    // const rgx = /(^\d{1,3}(?!\d|\w|\W)|(?=^\d\.\d{3}(?!\d|\w|\W))+)|(?=^\d\,\d{2}(?!\d|\w|\W))/; // sebelumnya tanpa Rp
     const rgx = /((^\Rp|\Rp\s)(\d{1,3}(?!\d|\w|\W))|(^\d{1,3}(?!\d|\w|\W))|(?=\d\.\d{3}(?!\d|\w|\W))+)|(?=\d\,\d{2}(?!\d|\w|\W))/;
     return rgx.test(value);
   };
 
-  // handler saat user mengganti value pada input
+  // Handler saat user mengganti value pada input
   onKeydownInputHandler = e => {
     const inputValue = e.key;
     const validPattern = /[RrPp.,]|\s|\d/;
@@ -46,12 +46,12 @@ class Input extends React.Component {
     }
   };
 
-  // input change handler
+  // Input change handler
   onChangeInputHandler = e => {
     // kosongkan data pada section result apabila field kosong
     if (e.target.value === "") {
       this.props.denominated(this.state.denominations); // dispatch action
-      this.props.emptyAmount(); // empty amount (result sebelumnya akan otomatis hilang)
+      this.props.emptyAmount(); // dispatch empty amount (result sebelumnya akan otomatis hilang)
     }
 
     let inputFromUser = e.target.value; // data yang diinput oleh user
@@ -72,12 +72,13 @@ class Input extends React.Component {
     }
   };
 
-  // input focus handler
+  // Input focus handler
   onFocusInputHandler = e => {
     this.setState({ errorClass: drstyles.hideMessage }); // kosongkan pesan error (apabila ada)
+    this.props.emptyAmount(); // dispatch empty amount (result sebelumnya akan otomatis hilang)
   };
 
-  // submit form handler
+  // Submit form handler
   onSubmitFormHandler = e => {
     e.preventDefault(); // prevent default
 
@@ -98,7 +99,7 @@ class Input extends React.Component {
     }
   };
 
-  // hitung pecahan dari nominal yang diinput
+  // Hitung pecahan dari nominal yang diinput
   denominateRupiah = nominal => {
     let inum = nominal.match(/\d+/) !== null ? nominal.match(/\d+/)[0] : 0; // extract number dari number yang diinput user yang telah tersimpan di state
     let i = inum;
@@ -332,10 +333,47 @@ class Input extends React.Component {
       obj = [...obj, { pecahan: "100", jumlah: Math.floor(seratusan(i)) }];
     }
 
+    /* 50 */
+    const limapuluhan = n => {
+      if (n >= 100) {
+        let nmin;
+        n >= 50000
+          ? (nmin =
+              ((seratusribuan(i) % 1).toFixed(5) * 100000 -
+                20000 * Math.floor(duapuluhribuan(n)) -
+                10000 * Math.floor(sepuluhribuan(n)) -
+                5000 * Math.floor(limaribuan(n)) -
+                2000 * Math.floor(duaribuan(n)) -
+                1000 * Math.floor(seribuan(n)) -
+                500 * Math.floor(limaratusan(n)) -
+                100 * Math.floor(seratusan(n)) -
+                50000) /
+              50)
+          : (nmin =
+              ((seratusribuan(i) % 1).toFixed(5) * 100000 -
+                20000 * Math.floor(duapuluhribuan(n)) -
+                10000 * Math.floor(sepuluhribuan(n)) -
+                5000 * Math.floor(limaribuan(n)) -
+                2000 * Math.floor(duaribuan(n)) -
+                1000 * Math.floor(seribuan(n)) -
+                500 * Math.floor(limaratusan(n)) -
+                100 * Math.floor(seratusan(n))) /
+              50);
+        return Math.floor(nmin); // dibulatkan ke bawah. 50 tidak akan lebih dari 2, karena diatasnya ada 100
+      } else {
+        return ((seratusribuan(i) % 1).toFixed(5) * 100000) / 50;
+      }
+    };
+
+    // tambah 50an ke object jika ada
+    if (limapuluhan(i) >= 1) {
+      obj = [...obj, { pecahan: "50", jumlah: Math.floor(limapuluhan(i)) }];
+    }
+
     return obj;
   };
 
-  // render
+  // Render
   render() {
     const warning = this.state.warning;
     console.log(this.state);

@@ -4,13 +4,18 @@ import drstyles from "../scss/Result.scss";
 
 const Result = props => {
   // console.log(props);
-  // map hasil pecahan rupiah
+  // map array hasil pecahan rupiah
   const renderList = () => {
     return props.result.map(rupiah => {
+      // format pecahan rupiah ke indonesian currency
+      let pecahanRupiah = new Intl.NumberFormat("id-ID", {
+        minimumFractionDigits: 0
+      }).format(rupiah.pecahan);
+
       return (
         <div key={rupiah.pecahan} className={drstyles.itemResult}>
           {props.dataloaded !== false
-            ? rupiah.jumlah + " x " + rupiah.pecahan
+            ? rupiah.jumlah + " x " + pecahanRupiah
             : ""}
         </div>
       );
@@ -25,7 +30,7 @@ const Result = props => {
       <div className={drstyles.resultContainer}>
         <p>
           Hasil pembagian dari <strong>{amountIDR}</strong> ke dalam pecahan
-          mata uang rupiah terbesar adalah:
+          mata uang rupiah terbesar hingga terkecil adalah:
         </p>
         {renderList()}
       </div>
