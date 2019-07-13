@@ -8,7 +8,19 @@ const Help = props => {
       <div className={drstyles.modalContainer}>
         <div className={drstyles.modalBody}>
           <div className={drstyles.modalContent}>
-            <h3>Petunjuk &amp; Aturan Penggunaan</h3>
+            <h3>Petunjuk Penggunaan</h3>
+            <ol>
+              <li>
+                Masukan nilai nominal yang ingin anda ubah ke dalam pecahan mata
+                uang rupiah dari pecahan yang paling besar hingga yang paling
+                kecil.
+              </li>
+              <li>
+                Tekan tombol ENTER dan nilai nominal yang anda masukan tadi akan
+                diubah ke dalam bentuk pecahan mata uang rupiah.
+              </li>
+            </ol>
+            <h3>Aturan Penggunaan</h3>
             <ol>
               <li>
                 Anda hanya bisa memasukan beberapa karakter dan angka. Karakter

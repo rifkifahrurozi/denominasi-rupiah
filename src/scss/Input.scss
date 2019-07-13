@@ -39,9 +39,13 @@
       font-weight: 600;
       font-size: 15px;
       line-height: 20px;
+      outline: none;
       &:hover {
         background-color: #4fa149;
         border-color: #4fa149;
+      }
+      &:active {
+        outline: none;
       }
     }
   }

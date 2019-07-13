@@ -21,10 +21,36 @@ class Input extends React.Component {
 
   // Validasi input dari user
   validateInput = value => {
-    // const rgx = /(^\d{1,3}(?!\d|\w|\W)|(?=^\d\.\d{3}(?!\d|\w|\W))+)|(?=^\d\,\d{2}(?!\d|\w|\W))/; // sebelumnya tanpa Rp
-    const rgx = /((^\Rp|\Rp\s)(\d{1,3}(?!\d|\w|\W))|(^\d{1,3}(?!\d|\w|\W))|(?=\d\.\d{3}(?!\d|\w|\W))+)|(?=\d\,\d{2}(?!\d|\w|\W))/;
-    return rgx.test(value);
+    // const rgx = /(^\d{1,3}(?!\d|\w|\W)|(?=^\d\.\d{3}(?!\d|\w|\W))+)|(?=^\d\,\d{2}(?!\d|\w|\W))/; // sebelumnya tanpa Rp & 3 angka diawal
+    const rgx = /((^\Rp|\Rp\s)(\d{1,5}(?!\d|\w|\W))|(^\d{1,5}(?!\d|\w|\W))|(?=\d\.\d{3}(?!\d|\w|\W))+)|(?=\d\,\d{2}(?!\d|\w|\W))/;
+    if (rgx.test(value) === false) {
+      // apabila tidak match dengan regex, maka return false
+      return false;
+    } else if (value.match(/[,]/g) && value.match(/[,]/g).length > 1) {
+      // apabila koma yang diikuti oleh angka lebih dari satu, maka return false
+      return false;
+    } else {
+      return true;
+    }
   };
+
+  // Bersihkan data dari angka dibelakang koma (jika ada)
+  cleanDataFromComma(value) {
+    if (value.match(/[,]/g) !== null) {
+      let dataSplitted = value.split(",");
+
+      // pop element array di depan koma
+      // @return Array
+      dataSplitted.pop();
+
+      // declare variable dan isi dengan data yang telah bersih dari koma (element index 0 pada dataSplitted)
+      let cleanNumber = dataSplitted[0];
+      return cleanNumber;
+    } else {
+      // jika tidak ada koma pada data, return value
+      return value;
+    }
+  }
 
   // Handler saat user mengganti value pada input
   onKeydownInputHandler = e => {
@@ -59,14 +85,17 @@ class Input extends React.Component {
     if (this.validateInput(inputFromUser) === false) {
       this.setState({ validate: false }); // apabila data tidak valid set validate ke false, untuk selanjutnya di proses di onSubmit
     } else {
-      this.setState({ nominal: inputFromUser, validate: true }); // set ke true agar dispatch berjalan di onSubmit
+      // bersihkan dulu data dari angka dibelakang koma (jika ada)
+      let cleanInputFromUser = this.cleanDataFromComma(inputFromUser);
 
-      // apabila input valid, maka extract number yang diinput oleh user untuk disimpan di state dan dikirim ke reducer
+      this.setState({ nominal: cleanInputFromUser, validate: true }); // set validate ke true agar dispatch berjalan di onSubmit
+
+      // extract number yang diinput oleh user untuk disimpan di state dan dikirim ke reducer
       let inputFromUserExtracted =
-        inputFromUser.match(/\d+/g) !== null
-          ? inputFromUser.match(/\d+/g).join("")
+        cleanInputFromUser.match(/\d+/g) !== null
+          ? cleanInputFromUser.match(/\d+/g).join("")
           : 0;
-
+      // simpan data di state
       let denominationsCount = this.denominateRupiah(inputFromUserExtracted);
       this.setState({ denominations: denominationsCount });
     }
