@@ -4,3 +4,5 @@ package-lock.json
 
 # production
 /dist
+/assets
+index.html

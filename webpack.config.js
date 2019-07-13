@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require("path");
 
 module.exports = {
   module: {
@@ -16,7 +17,10 @@ module.exports = {
         use: [
           {
             loader: "file-loader",
-            options: {}
+            options: {
+              outputPath: "assets/images", // output file
+              publicPath: "assets/images" // public path untuk diakses di aplikasi
+            }
           }
         ]
       },
@@ -58,7 +62,8 @@ module.exports = {
     ]
   },
   output: {
-    filename: "main.[hash].js"
+    path: path.resolve(__dirname), // production ke absolute path
+    filename: "assets/js/main.[hash].js"
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -66,7 +71,7 @@ module.exports = {
       filename: "./index.html" // inject generated script yang sudah di build production
     }),
     new MiniCssExtractPlugin({
-      filename: "main.[hash].css",
+      filename: "assets/css/main.[hash].css",
       chunkFilename: "main.[hash].css"
     })
   ]
