@@ -396,7 +396,6 @@ class Input extends React.Component {
         <form>
           <input
             type="text"
-            pattern="[\d]{9}"
             placeholder="Masukan nominal"
             onChange={this.onChangeInputHandler}
             onFocus={this.onFocusInputHandler}
