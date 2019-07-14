@@ -22,11 +22,17 @@ class Input extends React.Component {
   // Validasi input dari user
   validateInput = value => {
     // const rgx = /(^\d{1,3}(?!\d|\w|\W)|(?=^\d\.\d{3}(?!\d|\w|\W))+)|(?=^\d\,\d{2}(?!\d|\w|\W))/; // sebelumnya tanpa Rp & 3 angka diawal
-    const rgx = /((^\Rp|\Rp\s)(\d{1,5}(?!\d|\w|\W))|(^\d{1,5}(?!\d|\w|\W))|(?=\d\.\d{3}(?!\d|\w|\W))+)|(?=\d\,\d{2}(?!\d|\w|\W))/;
+    const rgx = /((^\Rp|\Rp\s)(\d{1,6}(?!\d|\w|\W))|(^\d{1,6}(?!\d|\w|\W))|(?=\d\.\d{3}(?!\d|\w|\W))+)|(?=\d\,\d{2}(?!\d|\w|\W))/;
     if (rgx.test(value) === false) {
       return false;
     } else if (value.match(/[,]/g) && value.match(/[,]/g).length > 1) {
       // apabila koma yang diikuti oleh angka lebih dari satu, maka return false
+      return false;
+    } else if (
+      value.search(/[^RrPp.,\s\d]/) &&
+      value.search(/[^RrPp.,\s\d]/) >= 1
+    ) {
+      // apabila terdapat input yang bukan RrPp.,spasi dan angka, maka return false
       return false;
     } else {
       return true;
@@ -50,26 +56,6 @@ class Input extends React.Component {
       return value;
     }
   }
-
-  // Handler saat user mengganti value pada input
-  onKeydownInputHandler = e => {
-    const inputValue = e.key;
-    const validPattern = /[RrPp.,]|\s|\d/;
-    const shiftButton = e.keyCode === 16 ? true : false; // tombol SHIFT pada keyboard
-
-    if (shiftButton) {
-      this.setState({ errorClass: drstyles.hideMessage });
-    } else if (inputValue.match(validPattern)) {
-      this.setState({ errorClass: drstyles.hideMessage });
-    } else {
-      e.preventDefault();
-      this.setState({
-        warning:
-          "Error: Karakter yang diperbolehkan hanya Rp,spasi,backspace,titik,koma, dan angka",
-        errorClass: drstyles.showMessage
-      });
-    }
-  };
 
   // Input change handler
   onChangeInputHandler = e => {
@@ -109,11 +95,11 @@ class Input extends React.Component {
   // Submit form handler
   onSubmitFormHandler = e => {
     e.preventDefault(); // prevent default
-
+    this.setState({ errorClass: drstyles.hideMessage }); // kosongkan pesan error (apabila ada)
     if (this.state.validate === false) {
       this.setState({
         warning:
-          "Error: Format tidak valid. Masukan format sesuai pada petunjuk penggunaan.",
+          "Error: Format/input tidak valid. Silahkan baca petunjuk penggunaan.",
         errorClass: drstyles.showMessage
       });
       this.props.emptyAmount(); // empty amount (result sebelumnya akan otomatis hilang)
@@ -410,8 +396,8 @@ class Input extends React.Component {
         <form>
           <input
             type="text"
+            pattern="[\d]{9}"
             placeholder="Masukan nominal"
-            onKeyDown={this.onKeydownInputHandler}
             onChange={this.onChangeInputHandler}
             onFocus={this.onFocusInputHandler}
           />

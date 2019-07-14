@@ -25,13 +25,8 @@ const Help = props => {
             <ol>
               <li>
                 Anda hanya bisa memasukan gabungan karakter yaitu:{" "}
-                <strong>Rp</strong> dan angka dari <strong>0-9</strong>
-              </li>
-              <li>
-                Tombol keyboard yang diperbolehkan hanyalah tombol{" "}
-                <strong>Enter</strong>, <strong>Spasi</strong>,{" "}
-                <strong>Shift</strong>, <strong>Arrows</strong> dan{" "}
-                <strong>Backspace</strong>
+                <strong>Rp</strong>, <strong>Titik(.)</strong>,{" "}
+                <strong>Koma(,)</strong> dan angka dari <strong>0-9</strong>
               </li>
               <li>
                 Format isian yang diperbolehkan adalah sebagai berikut, contoh:{" "}

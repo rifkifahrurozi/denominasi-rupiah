@@ -50,6 +50,9 @@ body {
         font-weight: 700;
         color: #4fa149;
         cursor: pointer;
+        background: transparent;
+        outline: 0;
+        -webkit-tap-highlight-color: transparent;
       }
     }
   }
