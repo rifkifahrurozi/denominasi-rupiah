@@ -13,8 +13,8 @@ const Footer = props => {
       <p>{props.initialStaticData.info}</p>
       <div className={drstyles.footerCredit}>
         <p>
-          Copyright 2019 by Rifki Fahrurozi. Aplikasi ini hanya sebatas uji coba
-          dan untuk di review oleh tim dari Tokopedia.{" "}
+          Copyright 2019 by Rifki Fahrurozi. Aplikasi ini hanya sebatas uji
+          coba.{" "}
         </p>
         <ul>
           <li

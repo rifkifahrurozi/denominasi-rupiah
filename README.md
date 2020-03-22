@@ -45,5 +45,5 @@ Catatan: untuk menghentikan server, cukup gunakan keyboard shortcut CTRL+C pada 
 
 ## Disclaimer
 
-Aplikasi ini hanya sebagai percobaan. Untuk memenuhi peryaratan proses rekrutmen karyawan baru.
+Aplikasi ini bertujuan untuk sebatas uji coba.
 Apabila ada pertanyaan, silahkan hubungi saya melalui email berikut: rifki.fahrurozi@gmail.com
